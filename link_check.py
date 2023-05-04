@@ -24,7 +24,9 @@ with open('url_check_results.txt', 'w') as f:
             else:
                 # Write the URL and status code to the file
                 f.write(f"{url}\t{response.status_code}\n")
+        except AttributeError as ae:
+            # Handle 'NoneType' object error
+            f.write(f"{url}\t{response.status_code}\n")
         except Exception as e:
             # Write the URL and error to the file
             f.write(f"{url}\t{str(e)}\n")
-            print(f"Error occurred for {url}: {str(e)}")
