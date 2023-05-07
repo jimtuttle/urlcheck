@@ -1,12 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
+
+# Uses the current date and time to add to the output filename so you don't overwrite a previous output file if you execute the script twice
+now = datetime.now()
+date_time = now.strftime("%m%d%Y-%H%M%S")
+filename= 'url_check_results'+date_time+'.txt'
 
 # Read URLs from the 'urls.txt' file
 with open('urls.txt', 'r') as urls_file:
     urls = urls_file.read().splitlines()
 
 # Open a file to write the results
-with open('url_check_results.txt', 'w') as f:
+with open(filename, 'w') as f:
     # Loop through each URL
     for url in urls:
         try:
