@@ -14,12 +14,13 @@ If the script runs into an error, which is also a sign that the link is not work
 
 ### Options
 
-`$ python link_check.py -h
+Verbose option prints results to stdout
+
+```$ python link_check.py -h
 usage: link_check.py [-h] [-v]
 
 options:
   -h, --help     show this help message and exit
   -v, --verbose  increase output verbosity
+  ```
 
-Verbose option prints results to stdout
-`
