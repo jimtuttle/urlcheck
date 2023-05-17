@@ -14,12 +14,32 @@ If the script runs into an error, which is also a sign that the link is not work
 
 ### Options
 
-`$ python link_check.py -h
-usage: link_check.py [-h] [-v]
+```$ python link_check.py -h
+usage: link_check.py [-h] [-v] [-d DELAY]
 
 options:
-  -h, --help     show this help message and exit
-  -v, --verbose  increase output verbosity
+  -h, --help            show this help message and exit
+  -v, --verbose         increase output verbosity
+  -d DELAY, --delay DELAY
 
+```
 Verbose option prints results to stdout
-`
+```
+$ python link_check.py -v
+https://www.google.com/ 200     Google
+https://www.bing.com/   200     Bing
+https://example.com/    200     Example Domain
+https://www.cnn.com/aewsre      404
+```
+
+Delay adds a delay between requests to avoid triggering download restrictions popular with
+electronic resource providers.  Delay must be an integer between 0 and 60.
+
+```
+$ python link_check.py -v -d 2
+2 second delay between requests
+https://www.google.com/ 200     Google
+https://www.bing.com/   200     Bing
+https://example.com/    200     Example Domain
+https://www.cnn.com/aewsre      404
+```
