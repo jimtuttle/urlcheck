@@ -2,12 +2,15 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 from argparse import ArgumentParser
+from time import sleep
 
 
 def main():
     parser = ArgumentParser()
     parser.add_argument("-v", "--verbose", help="increase output verbosity",
                         action="store_true")
+    parser.add_argument("-d", "--delay", help="seconds between reqeuests (int)",
+                        action="store", type=int)
     args = parser.parse_args()
 
     # Uses the current date and time to add to the output filename so you
@@ -15,6 +18,14 @@ def main():
     now = datetime.now()
     date_time = now.strftime("%m%d%Y-%H%M%S")
     filename= 'url_check_results'+date_time+'.txt'
+
+    # Validate sleep delay is integer between 0 and 60 seconds
+    if args.delay:
+        if int(args.delay) in range(0, 60, 1):
+            print(args.delay , "second delay between requests")
+        else:
+            print("Argument Error.  Sleep delay must be an integer (1, 2, etc).")
+            exit()
 
     # Read URLs from the 'urls.txt' file
     with open('urls.txt', 'r') as urls_file:
@@ -46,8 +57,14 @@ def main():
                 record =f"{url}\t{str(e)}"
             # Write record to file
             f.write(record + "\n")
+
+            # If verbose output selected, print each request result to screen
             if args.verbose:
                 print(record)
+
+            # If sleep delay selected, pause number of seconds before next request
+            if args.delay:
+                sleep(int(args.delay))
 
 
 if __name__=="__main__":
