@@ -11,3 +11,16 @@ If the script runs into an error, which is also a sign that the link is not work
 * Ensure that urls.txt exists in project directory
 * Run application `python link_check.py`
 * Review results file url_check_results...txt
+
+### Options
+
+Verbose option prints results to stdout
+
+```$ python link_check.py -h
+usage: link_check.py [-h] [-v]
+
+options:
+  -h, --help     show this help message and exit
+  -v, --verbose  increase output verbosity
+  ```
+
