@@ -14,7 +14,9 @@ If the script runs into an error, which is also a sign that the link is not work
 
 ### Options
 
-```$ python link_check.py -h
+feature-sleep
+```
+$ python link_check.py -h
 usage: link_check.py [-h] [-v] [-d DELAY]
 
 options:
@@ -30,6 +32,7 @@ https://www.google.com/ 200     Google
 https://www.bing.com/   200     Bing
 https://example.com/    200     Example Domain
 https://www.cnn.com/aewsre      404
+
 ```
 
 Delay adds a delay between requests to avoid triggering download restrictions popular with
@@ -42,4 +45,15 @@ https://www.google.com/ 200     Google
 https://www.bing.com/   200     Bing
 https://example.com/    200     Example Domain
 https://www.cnn.com/aewsre      404
+```
+
+Verbose option prints results to stdout
+
+```
+$ python link_check.py -h
+usage: link_check.py [-h] [-v]
+
+options:
+  -h, --help     show this help message and exit
+  -v, --verbose  increase output verbosity
 ```
